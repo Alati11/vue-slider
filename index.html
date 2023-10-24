@@ -24,13 +24,13 @@
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit
                             tempore aliquid deleniti aut
                             veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum
-                            corporis. 
+                            corporis.
                         </p>
                     </div>
                 </div>
 
                 <div class="thumbs">
-                    <div class="prev"></div>
+                    <div class="prev" @click="prevImage()"></div>
                     <div class="next" @click="nextImage()"></div>
                     <!-- <div class="thumb active">
                         <img src="img/01.webp" alt="Svezia" />
@@ -48,11 +48,14 @@
                         <img src="img/05.webp" alt="Avengers" />
                     </div> -->
                     <img :src="slides.image[currentIndex]" />
-                   
-                    
+                    <figure class="thumb" :class="currentIndex === index ? 'active' : ''"
+                        v-for="(image, index) in slides.images" @click="changeImage(index)">
+                        <img :src="image" alt="">
+                    </figure>
+
                 </div>
 
-            </div> 
+            </div>
         </div>
 
     </div>
