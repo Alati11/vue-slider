@@ -1,43 +1,37 @@
-
-const { createApp } = Vue
+const { createApp } = Vue;
 
 createApp({
-    data: function() {
+    data() {
         return {
-            currentIndex: 0,
+            activeSlide: 0,
             slides: [
-                { // 0
-                    image: 'img/01.webp',
-                }, { // 1
-                    image: 'img/02.webp',
-                }, {
-                    image: 'img/03.webp',
-                }, {
-                    image: 'img/04.webp',
-                }, {
-                    image: 'img/05.webp',
-                }
-            ],
-        }
+                { image: 'img/01.webp' },
+                { image: 'img/02.webp' },
+                { image: 'img/03.webp' },
+                { image: 'img/04.webp' },
+                { image: 'img/05.webp' }
+            ]
+        };
     },
     methods: {
         nextImage() {
-            this.currentIndex++;
-            if (this.currentIndex > this.currentIndex.slides.image.length-1 ) {
-                this.currentIndex = 0;
+            this.activeSlide++;
+            if (this.activeSlide > this.slides.length - 1) {
+                this.activeSlide = 0;
             }
         },
         prevImage() {
-            this.currentIndex--;
-            if (this.currentIndex < 0 ) {
-                this.currentIndex === this.currentIndex.slides.image.length -1;
-            }        
+            this.activeSlide--;
+            if (this.activeSlide < 0) {
+                this.activeSlide = this.slides.length - 1;
+            }
         },
-        changeImage() {
-            this.currentIndex = thumbIndex;
-        },
-     },
-    //  mounted ( ) {
-    //     console.log (" Vue magico")
-    //  }
+        changeImage(index) {
+            this.activeSlide = index;
+        }
+    },
+    mounted() {
+        console.log("Vue magico");
+    }
 }).mount('#app');
+
